@@ -87,6 +87,39 @@ Error: failed to download modules: binary with name "go" not found
 This error occurs if you have not installed the `go` programming language on your system.
 See this [section](https://www.docsy.dev/docs/get-started/docsy-as-module/installation-prerequisites/#install-go-language) of the user guide for instructions on how to install `go`.
 
+Or the following error:
+
+```
+➜ hugo server
+Start building sites … 
+hugo v0.105.0-0e3b42b4a9bdeb4d866210819fc6ddcf51582ffa+extended darwin/arm64 BuildDate=2022-10-28T12:29:05Z VendorInfo=gohugoio
+Error: Error building site: "/Users/rterakedis/Documents/Git-Repos/ot-docsy/content/en/_index.html:7:1": failed to extract shortcode: template for shortcode "blocks/cover" not found
+```
+
+This error may be from cache problems. Try running `hugo mod clean --all` and then `hugo server` again.   You can also run `npm install` to install the required dependencies.
+
+Or the following error:
+
+```
+hugo server -D                             
+go: github.com/FortAwesome/Font-Awesome@v0.0.0-20220831210243-d3a7818c253f: invalid version: git ls-remote -q origin in /var/folders/r8/y4bg72d56lq9ry7fry3s1yc80000gp/T/hugo_cache/modules/filecache/modules/pkg/mod/cache/vcs/a81254f0cf90f611158215d1cb50586eccc323b54ab825bb7e9c8b2580ac9fb3: exit status 128:
+        fatal: 'origin' does not appear to be a git repository
+        fatal: Could not read from remote repository.
+
+        Please make sure you have the correct access rights
+        and the repository exists.
+hugo: collected modules in 514 ms
+Error: failed to download modules: failed to execute 'go [mod download]': failed to execute binary "go" with args [mod download]: go: github.com/FortAwesome/Font-Awesome@v0.0.0-20220831210243-d3a7818c253f: invalid version: git ls-remote -q origin in /var/folders/r8/y4bg72d56lq9ry7fry3s1yc80000gp/T/hugo_cache/modules/filecache/modules/pkg/mod/cache/vcs/a81254f0cf90f611158215d1cb50586eccc323b54ab825bb7e9c8b2580ac9fb3: exit status 128:
+        fatal: 'origin' does not appear to be a git repository
+        fatal: Could not read from remote repository.
+
+        Please make sure you have the correct access rights
+        and the repository exists.
+```
+
+This error required clearing the hugo cache: `sudo rm -R $TMPDIR/hugo_cache`
+
+
 
 [alternate dashboard]: https://app.netlify.com/sites/goldydocs/deploys
 [deploys]: https://app.netlify.com/sites/docsy-example/deploys
