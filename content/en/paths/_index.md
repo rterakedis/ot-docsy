@@ -6,7 +6,8 @@ menu:
   main:
     weight: 20
     pre: <i class='fa-solid fa-signs-post'></i>
-type: docs
+cascade:
+  - type: "docs"
 ---
 
 {{% pageinfo %}}
